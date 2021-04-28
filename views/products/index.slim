@@ -1,0 +1,48 @@
+.logodiv
+        h4 blaket.
+
+.header
+    
+    .wrapper  
+        .flex-item
+            h2
+                a href="/" Home
+        .flex-item
+            h2
+                a href="/mypage" My Products
+        .flex-item
+            h2
+                a href="/logout" Logout
+        
+
+
+button.myBtn id="myBtn" class="fa fa-plus"
+.backwrap
+    .background
+.modal id="myModal"
+    .modal-content 
+        .postwrap
+            form action="/product/new" method="POST" enctype="multipart/form-data"
+                input type="text" name="titel" placeholder="titel"
+                input type="text" name="beskrivning" placeholder="beskrivning"
+                input type="number" name="pris" value="pris" placeholder="pris"
+                input.fileinp type="file" name="image" accept="image/x-png,image/gif,image/jpeg" value="Ladda upp bild"
+                input.addBtn type="submit" value="Lägg upp"
+
+.wrap2
+        - products.each do |product|
+                .card
+                    a href="/product/#{product["id"]}"
+                        img.post src = ('/img/'+product['id'].to_s+"#{product['ext']}")
+                        .container
+                            p.bold = product["titel"]
+
+                            p = product["pris"].to_s + " kr"
+
+                /!
+                    form method="PUT" action="/product/#{product["id"]}"
+                        input type="text" name="todo" placeholder="Nytt namn på todo"
+                        input type="submit" value="Update"
+                    form method="DELETE" action="/product/#{product["id"]}"
+                        input type="submit" value="Delete"
+script src="/js/main.js/"

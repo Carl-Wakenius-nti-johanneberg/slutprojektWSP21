@@ -1,0 +1,44 @@
+.logodiv
+        h4 blaket.
+
+.header
+    
+    .wrapper  
+        .flex-item
+            h2
+                a href="/" Home
+        .flex-item
+            h2
+                a href="/mypage" My Products
+        .flex-item
+            h2
+                a href="/logout" Logout
+        
+.backwrap
+    .background
+.modal id="myModal"
+    .modal-content 
+        .postwrap
+            form action="/product/new" method="POST" enctype="multipart/form-data"
+                input type="text" name="titel" placeholder="titel"
+                input type="text" name="beskrivning" placeholder="beskrivning"
+                input type="number" name="pris" value="pris" placeholder="pris"
+                input.fileinp type="file" name="image" accept="image/x-png,image/gif,image/jpeg" value="Ladda upp bild"
+                input.addBtn type="submit" value="Lägg upp"
+
+
+.wrap3
+        .card2 style="background-image:url('#{('/img/'+product['id'].to_s+product['ext'])}');"
+            a href="/product/#{product["id"]}"
+                form method="GET" action="/"
+                    button.myBtn type="submit" class="fa fa-arrow-left"
+            - if product['userid'] == userid
+                form method="POST" action="/product/#{product["id"]}/delete"
+                    button.myBtn1 type="submit" Ta bort produkt
+        .container2
+            p.bold = product["titel"]
+            p = product["beskrivning"] 
+            p = product["pris"].to_s + " kr"
+            
+            
+script src="/js/main.js/"
